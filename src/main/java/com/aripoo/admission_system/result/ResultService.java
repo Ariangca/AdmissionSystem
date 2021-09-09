@@ -31,7 +31,7 @@ public class ResultService {
     }
 
 
-    public List<Result> getResult(){
+    public List<Result> getResults(){
         return resultRepository.findAll();
 //        List<Result> a = null;
 //        return a;

@@ -4,7 +4,6 @@ import com.aripoo.admission_system.course.Course;
 import com.aripoo.admission_system.student.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,8 +19,8 @@ public class ResultController {
     }
 
     @GetMapping(path = "/result_list")
-    public List<Result> getResult(){
-        return resultService.getResult();
+    public List<Result> getResults(){
+        return resultService.getResults();
     }
 
     @PostMapping(path = "/result_add")

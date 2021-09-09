@@ -22,7 +22,7 @@ public class CourseService {
     }
 
 
-    public List<Course> getCourse(){
+    public List<Course> getCourses(){
         return courseRepository.findAll();
 
     }

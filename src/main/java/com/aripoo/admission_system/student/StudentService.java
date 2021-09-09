@@ -21,7 +21,7 @@ public class StudentService {
     }
 
 
-    public List<Student> getStudent(){
+    public List<Student> getStudents(){
         return studentRepository.findAll();
 
     }

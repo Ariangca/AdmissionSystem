@@ -1,6 +1,5 @@
 package com.aripoo.admission_system.course;
 
-import com.aripoo.admission_system.student.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,8 +16,8 @@ public class CourseController {
     }
 
     @GetMapping(path = "/course_list")
-    public List<Course> getCourse(){
-        return courseService.getCourse();
+    public List<Course> getCourses(){
+        return courseService.getCourses();
     }
 
     @PostMapping(path = "/course_add")

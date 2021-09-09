@@ -7,7 +7,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
-import java.util.List;
 
 @Controller
 @RequestMapping(path= "/")
@@ -20,14 +19,10 @@ public class StudentController {
         this.studentService = studentService;
     }
 
-    @RequestMapping(path = "student_list", method = RequestMethod.GET)
-    public String getStudent(Model model){
-        model.addAttribute("listStudents", studentService.getStudent());
-        System.out.println("000000000000000000000000000000000000000000000000000000" +
-                "-------------------------------------------------------------");
+    @GetMapping (path = "student_list")
+    public String getStudents(Model model){
+        model.addAttribute("student_list", studentService.getStudents());
         return "student_list";
-//        return studentService.getStudent();
-
     }
 
     @PostMapping(path = "student_add")
