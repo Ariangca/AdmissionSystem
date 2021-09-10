@@ -4,11 +4,13 @@ import com.aripoo.admission_system.course.Course;
 import com.aripoo.admission_system.student.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping(path = "/")
 public class ResultController {
     private final ResultService resultService;
@@ -19,8 +21,9 @@ public class ResultController {
     }
 
     @GetMapping(path = "/result_list")
-    public List<Result> getResults(){
-        return resultService.getResults();
+    public String getResults(Model model){
+        model.addAttribute("result_list",resultService.getResults());
+        return "result_list";
     }
 
     @PostMapping(path = "/result_add")

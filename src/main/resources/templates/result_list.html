@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="https:/www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<table border="1">
+    <tr>
+        <td>student id</td>
+        <td>course id</td>
+        <td>Mark</td>
+        <td>Session</td>
+    </tr>
+    <th:block th:each="result : ${result_list}">
+    <tr>
+        <td th:text="${result.id.student.id}" />
+        <td th:text="${result.id.course.id}" />
+        <td th:text="${result.mark}" />
+        <td th:text="${result.session}" />
+    </tr>
+    </th:block>
+</table>
+</body>
+</html>

@@ -5,12 +5,20 @@
     <title>Title</title>
 </head>
 <body>
-<tr th:each="course: ${course_list}">
-    <td th:text="${course.id}" />
-    <td th:text="${course.courseName}" />
-    <td th:text="${course.lastName}" />
-    <td th:text="${course.email}" />
-    <td th:text="${course.dob}" />
-</tr>
+
+<table border="1">
+    <tr>
+        <td>course id</td>
+        <td>course name</td>
+        <td>credit number</td>
+    </tr>
+    <th:block th:each="course : ${course_list}">
+    <tr>
+        <td th:text="${course.id}" />
+        <td th:text="${course.courseName}" />
+        <td th:text="${course.creditNumber}" />
+    </tr>
+    </th:block>
+</table>
 </body>
 </html>

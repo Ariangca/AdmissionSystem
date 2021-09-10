@@ -1,11 +1,13 @@
 package com.aripoo.admission_system.course;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping(path= "/")
 public class CourseController {
     private final CourseService courseService;
@@ -16,8 +18,9 @@ public class CourseController {
     }
 
     @GetMapping(path = "/course_list")
-    public List<Course> getCourses(){
-        return courseService.getCourses();
+    public String getCourses(Model model){
+        model.addAttribute("course_list",courseService.getCourses());
+        return "course_list";
     }
 
     @PostMapping(path = "/course_add")

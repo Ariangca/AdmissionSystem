@@ -21,7 +21,9 @@ public class ResultConfig {
             Course c1=new Course("c1",2);
             Result r1 = new Result(new StudentCourseId(s1,c1),2,2);
             studentRepository.save(s1);
+            studentRepository.save(new Student("asghar","gholi","gmail", LocalDate.now()));
             courseRepository.save(c1);
+            courseRepository.save(new Course("c1",2));
             repository.saveAll(List.of(r1));
         };
     }

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="https:/www.thymeleaf.org">
+<head>
+    <script type="text/javascript" src="validate.js"></script>
+</head>
+<body>
+<form action="/student_add" name="StudentRegistration" method="post">
+
+    <table cellpadding="2" width="20%" bgcolor="99FFFF" align="center"
+           cellspacing="2">
+
+        <tr>
+            <td colspan=2>
+                <center><font size=4><b>Student Registration Form</b></font></center>
+            </td>
+        </tr>
+
+        <tr>
+            <td>First Name</td>
+            <td><input type=text name=firstName id="firstName" size="30"></td>
+        </tr>
+        <tr>
+            <td>Last Name</td>
+            <td><input type=text name=lastName id="lastName" size="30"></td>
+        </tr>
+
+
+
+        <tr>
+            <td>gender</td>
+            <td><input type="radio" name="sex" value="male" size="10">Male
+                <input type="radio" name="sex" value="Female" size="10">Female
+                <input type="radio" name="sex" value="Other" size="10">Other</td>
+        </tr>
+
+        <tr>
+            <td>City</td>
+            <td><select name="City">
+                <option value="-1" selected>select..</option>
+                <option value="New Delhi">NEW DELHI</option>
+                <option value="Mumbai">MUMBAI</option>
+                <option value="Goa">GOA</option>
+                <option value="Patna">PATNA</option>
+            </select></td>
+        </tr>
+
+        <tr>
+            <td>Email</td>
+            <td><input type="text" name="email" id="email" size="30"></td>
+        </tr>
+
+        <tr>
+            <td>DOB</td>
+            <td><input type="text" name="dob" id="dob" size="30"></td>
+        </tr>
+
+        <tr>
+            <td><input type="reset"></td>
+            <td colspan="2"><input type="submit" value="Submit Form" /></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

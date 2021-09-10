@@ -19,10 +19,15 @@ public class StudentController {
         this.studentService = studentService;
     }
 
-    @GetMapping (path = "student_list")
+    @GetMapping (path = "")
     public String getStudents(Model model){
         model.addAttribute("student_list", studentService.getStudents());
-        return "student_list";
+        return "student/student_list";
+    }
+
+    @RequestMapping(path = "student_add",method = RequestMethod.GET)
+    public void student_form(){
+
     }
 
     @PostMapping(path = "student_add")
