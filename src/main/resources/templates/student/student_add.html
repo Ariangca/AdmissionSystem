@@ -4,7 +4,8 @@
     <script type="text/javascript" src="validate.js"></script>
 </head>
 <body>
-<form action="/student_add" name="StudentRegistration" method="post">
+<div th:replace="fragments/topnav :: navbar"></div>
+<form action="#" th:action="@{/student_add}" th:object="${student}" method="post">
 
     <table cellpadding="2" width="20%" bgcolor="99FFFF" align="center"
            cellspacing="2">
@@ -15,44 +16,41 @@
             </td>
         </tr>
 
-        <tr>
-            <td>First Name</td>
-            <td><input type=text name=firstName id="firstName" size="30"></td>
-        </tr>
-        <tr>
-            <td>Last Name</td>
-            <td><input type=text name=lastName id="lastName" size="30"></td>
-        </tr>
+<!--        <tr>-->
+<!--            <td>First Name</td>-->
+<!--            <td><input type=text th:value="*{firstName}" name="firstName" id="firstName" size="30" /></td>-->
 
+<!--        </tr>-->
 
+<!--        <tr>-->
+<!--            <td>Last Name</td>-->
+<!--            <td><input type=text th:field="*{lastName}" name="lastName" id="lastName" size="30" /></td>-->
+<!--        </tr>-->
 
-        <tr>
-            <td>gender</td>
-            <td><input type="radio" name="sex" value="male" size="10">Male
-                <input type="radio" name="sex" value="Female" size="10">Female
-                <input type="radio" name="sex" value="Other" size="10">Other</td>
-        </tr>
+<!--        <tr>-->
+<!--            <td>address</td>-->
+<!--            <td><input type=text th:field="*{address}" name="address" id="address" size="30" /></td>-->
+<!--        </tr>-->
 
-        <tr>
-            <td>City</td>
-            <td><select name="City">
-                <option value="-1" selected>select..</option>
-                <option value="New Delhi">NEW DELHI</option>
-                <option value="Mumbai">MUMBAI</option>
-                <option value="Goa">GOA</option>
-                <option value="Patna">PATNA</option>
-            </select></td>
-        </tr>
+<!--       <tr>-->
+<!--            <td>city</td>-->
+<!--            <td><input type=text th:field="*{city}" name="city" id="city" size="30" /></td>-->
+<!--        </tr>-->
 
-        <tr>
-            <td>Email</td>
-            <td><input type="text" name="email" id="email" size="30"></td>
-        </tr>
+<!--       <tr>-->
+<!--            <td>country</td>-->
+<!--            <td><input type=text th:field="*{country}" name="country" id="country" size="30" /></td>-->
+<!--        </tr>-->
 
-        <tr>
-            <td>DOB</td>
-            <td><input type="text" name="dob" id="dob" size="30"></td>
-        </tr>
+<!--        <tr>-->
+<!--            <td>phone number</td>-->
+<!--            <td><input type="text" th:field="*{phoneNumber}" name="phoneNumber" id="phoneNumber" size="30" /></td>-->
+<!--        </tr>-->
+
+<!--        <tr>-->
+<!--            <td>major</td>-->
+<!--            <td><input type="text" th:field="*{major}" name="major" id="major" size="30" /></td>-->
+<!--        </tr>-->
 
         <tr>
             <td><input type="reset"></td>

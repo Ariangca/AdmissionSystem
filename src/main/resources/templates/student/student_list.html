@@ -5,21 +5,29 @@
     <title>Title</title>
 </head>
 <body>
-<table border="1">
-    <tr>
-        <td>student id</td>
-        <td>first name</td>
-        <td>last name</td>
-        <td>email</td>
-        <td>dob</td>
-    </tr>
-    <tr th:each="student: ${student_list}">
-        <td th:text="${student.id}" />
-        <td th:text="${student.firstName}" />
-        <td th:text="${student.lastName}" />
-        <td th:text="${student.email}" />
-        <td th:text="${student.dob}" />
-    </tr>
-</table>
+    <div th:replace="fragments/topnav :: navbar"></div>
+    <table border="1">
+        <tr>
+            <td>student id</td>
+            <td>first name</td>
+            <td>last name</td>
+            <td>address</td>
+            <td>city</td>
+            <td>country</td>
+            <td>phone number</td>
+            <td>major</td>
+        </tr>
+        <tr th:each="student: ${student_list}">
+            <td th:text="${student.id}" />
+            <td th:text="${student.firstName}" />
+            <td th:text="${student.lastName}" />
+            <td th:text="${student.address}" />
+            <td th:text="${student.city}" />
+            <td th:text="${student.country}" />
+            <td th:text="${student.phoneNumber}" />
+            <td th:text="${student.major}" />
+        </tr>
+    </table>
+    <a th:href="@{student_add}">student_add</a>
 </body>
 </html>

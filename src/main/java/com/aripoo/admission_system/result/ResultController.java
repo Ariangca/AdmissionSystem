@@ -8,8 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @Controller
 @RequestMapping(path = "/")
 public class ResultController {
@@ -23,7 +21,7 @@ public class ResultController {
     @GetMapping(path = "/result_list")
     public String getResults(Model model){
         model.addAttribute("result_list",resultService.getResults());
-        return "result_list";
+        return "result/result_list";
     }
 
     @PostMapping(path = "/result_add")
@@ -31,16 +29,16 @@ public class ResultController {
         resultService.addNewResult(result);
     }
 
-    @DeleteMapping(path = "/edit_result/{studentId}/{courseId}")
-    public void deleteResult(@PathVariable Long studentId,@PathVariable Long courseId){
-        resultService.deleteResult(new StudentCourseId(new Student(studentId),new Course(courseId)));
-    }
-
-    @PutMapping(path = "/edit_result/{studentId}/{courseId}")
-    public void updateResult(@PathVariable("studentId") Long studentId,
-                             @PathVariable("courseId") Long courseId,
-                             @RequestParam(required = false) Integer session,
-                             @RequestParam(required = false) Integer mark){
-        resultService.updateResult(studentId, courseId, session, mark);
-    }
+//    @DeleteMapping(path = "/edit_result/{studentId}/{courseId}")
+//    public void deleteResult(@PathVariable Long studentId,@PathVariable Long courseId){
+//        resultService.deleteResult(new StudentCourseId(new Student(studentId),new Course(courseId)));
+//    }
+//
+//    @PutMapping(path = "/edit_result/{studentId}/{courseId}")
+//    public void updateResult(@PathVariable("studentId") Long studentId,
+//                             @PathVariable("courseId") Long courseId,
+//                             @RequestParam(required = false) Integer session,
+//                             @RequestParam(required = false) Integer mark){
+//        resultService.updateResult(studentId, courseId, session, mark);
+//    }
 }

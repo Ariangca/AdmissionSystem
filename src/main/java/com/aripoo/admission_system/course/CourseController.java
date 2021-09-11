@@ -5,8 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @Controller
 @RequestMapping(path= "/")
 public class CourseController {
@@ -20,7 +18,7 @@ public class CourseController {
     @GetMapping(path = "/course_list")
     public String getCourses(Model model){
         model.addAttribute("course_list",courseService.getCourses());
-        return "course_list";
+        return "course/course_list";
     }
 
     @PostMapping(path = "/course_add")

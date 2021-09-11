@@ -17,13 +17,11 @@ public class ResultConfig {
     @Bean
     CommandLineRunner commandLineRunner(ResultRepository repository, StudentRepository studentRepository, CourseRepository courseRepository) {
         return args -> {
-            Student s1=new Student("asghar","gholi","gmail", LocalDate.now());
+            Student s1=new Student("asghar","gholi","gholamabad","gholamcity","gholamdare","000000","computer");
             Course c1=new Course("c1",2);
             Result r1 = new Result(new StudentCourseId(s1,c1),2,2);
             studentRepository.save(s1);
-            studentRepository.save(new Student("asghar","gholi","gmail", LocalDate.now()));
             courseRepository.save(c1);
-            courseRepository.save(new Course("c1",2));
             repository.saveAll(List.of(r1));
         };
     }

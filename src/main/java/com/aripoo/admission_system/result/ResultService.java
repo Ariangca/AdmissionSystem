@@ -42,33 +42,33 @@ public class ResultService {
         resultRepository.save(result);
     }
 
-    public void deleteResult(StudentCourseId resultId) {
-        resultRepository.deleteById(resultId);
-    }
+//    public void deleteResult(StudentCourseId resultId) {
+//        resultRepository.deleteById(resultId);
+//    }
 
-    @Transactional
-    public void updateResult(Long studentId, Long courseId, Integer session, Integer mark) {
-        Student student=studentRepository.findById(studentId).orElseThrow(
-                ()->new IllegalStateException("student with id "+ studentId + " does not exist"));
-
-        Course course=courseRepository.findById(courseId).orElseThrow(
-                ()-> new IllegalStateException("course with id "+ courseId + " does not exist"));
-
-        StudentCourseId studentCourseId=new StudentCourseId(student, course);
-
-        Result result= resultRepository.findById(studentCourseId).orElseThrow(
-                ()-> new IllegalStateException("result with student id "+ studentId +" and course id" +
-                        courseId +" does not exist")
-        );
-
-        if(session !=null && session>0 && !Objects.equals(result.getSession(),session)){
-            result.setSession(session);
-        }
-
-        if(mark !=null && mark>0 && !Objects.equals(result.getMark(),mark)){
-            result.setMark(mark);
-        }
-
-    }
+//    @Transactional
+//    public void updateResult(Long studentId, Long courseId, Integer session, Integer mark) {
+//        Student student=studentRepository.findById(studentId).orElseThrow(
+//                ()->new IllegalStateException("student with id "+ studentId + " does not exist"));
+//
+//        Course course=courseRepository.findById(courseId).orElseThrow(
+//                ()-> new IllegalStateException("course with id "+ courseId + " does not exist"));
+//
+//        StudentCourseId studentCourseId=new StudentCourseId(student, course);
+//
+//        Result result= resultRepository.findById(studentCourseId).orElseThrow(
+//                ()-> new IllegalStateException("result with student id "+ studentId +" and course id" +
+//                        courseId +" does not exist")
+//        );
+//
+//        if(session !=null && session>0 && !Objects.equals(result.getSession(),session)){
+//            result.setSession(session);
+//        }
+//
+//        if(mark !=null && mark>0 && !Objects.equals(result.getMark(),mark)){
+//            result.setMark(mark);
+//        }
+//
+//    }
 
 }

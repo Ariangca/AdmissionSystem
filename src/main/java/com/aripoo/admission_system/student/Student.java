@@ -28,17 +28,24 @@ public class Student {
     private Long id;
     private String firstName;
     private String lastName;
-    private String email;
-    private LocalDate dob;
+    private String address;
+    private String city;
+    private String country;
+    private String phoneNumber;
+    private String major;
+
 
     public Student() {
     }
 
-    public Student(String firstName, String lastName, String email, LocalDate dob) {
+    public Student(String firstName, String lastName, String address, String city, String country, String phoneNumber, String major) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.email = email;
-        this.dob = dob;
+        this.address = address;
+        this.city = city;
+        this.country = country;
+        this.phoneNumber = phoneNumber;
+        this.major = major;
     }
 
     public Student(Long id) {
