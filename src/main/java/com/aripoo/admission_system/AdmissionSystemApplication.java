@@ -12,11 +12,11 @@ import java.util.List;
 
 @SpringBootApplication
 
-public class  AdmissionSystemApplication {
+public class AdmissionSystemApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(AdmissionSystemApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(AdmissionSystemApplication.class, args);
+    }
 
 
 }

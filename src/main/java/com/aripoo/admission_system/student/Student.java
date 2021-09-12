@@ -38,7 +38,9 @@ public class Student {
     public Student() {
     }
 
-    public Student(String firstName, String lastName, String address, String city, String country, String phoneNumber, String major) {
+    public Student(String firstName, String lastName,
+                   String address, String city, String country,
+                   String phoneNumber, String major) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;

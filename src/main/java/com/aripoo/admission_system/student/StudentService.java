@@ -21,13 +21,13 @@ public class StudentService {
     }
 
 
-    public List<Student> getStudents(){
+    public List<Student> getStudents() {
         return studentRepository.findAll();
 
     }
 
-    public Student getStudentById(Long id){
-        Student student=studentRepository.getById(id);
+    public Student getStudentById(Long id) {
+        Student student = studentRepository.getById(id);
         return student;
     }
 
@@ -40,7 +40,7 @@ public class StudentService {
     }
 
     public void deleteStudent(Long studentId) {
-        if(!studentRepository.existsById(studentId)){
+        if (!studentRepository.existsById(studentId)) {
             throw new IllegalStateException("student with id " + studentId + " does not exists");
         }
         studentRepository.deleteById(studentId);
@@ -49,33 +49,33 @@ public class StudentService {
     @Transactional //SDJPA
     public void editStudent(Long studentId, String firstName, String lastName, String address, String city, String country, String phoneNumber, String major) {
         Student student = studentRepository.findById(studentId).orElseThrow(
-                () -> new IllegalStateException("student with id "+ studentId + " does not exist"));
+                () -> new IllegalStateException("student with id " + studentId + " does not exist"));
 
-        if( firstName !=null && firstName.length()>0 && !Objects.equals(student.getFirstName(),firstName)) {
+        if (firstName != null && firstName.length() > 0 && !Objects.equals(student.getFirstName(), firstName)) {
             student.setFirstName(firstName);
         }
 
-        if( lastName !=null && lastName.length()>0 && !Objects.equals(student.getLastName(),lastName)) {
+        if (lastName != null && lastName.length() > 0 && !Objects.equals(student.getLastName(), lastName)) {
             student.setLastName(lastName);
         }
 
-        if( address !=null && address.length()>0 && !Objects.equals(student.getAddress(),address)) {
+        if (address != null && address.length() > 0 && !Objects.equals(student.getAddress(), address)) {
             student.setAddress(address);
         }
 
-        if( city !=null && city.length()>0 && !Objects.equals(student.getCity(),city)) {
+        if (city != null && city.length() > 0 && !Objects.equals(student.getCity(), city)) {
             student.setCity(city);
         }
 
-        if( country !=null && country.length()>0 && !Objects.equals(student.getCountry(),country)) {
+        if (country != null && country.length() > 0 && !Objects.equals(student.getCountry(), country)) {
             student.setCountry(country);
         }
 
-        if( phoneNumber !=null && phoneNumber.length()>0 && !Objects.equals(student.getPhoneNumber(),phoneNumber)) {
+        if (phoneNumber != null && phoneNumber.length() > 0 && !Objects.equals(student.getPhoneNumber(), phoneNumber)) {
             student.setPhoneNumber(city);
         }
 
-        if( major !=null && major.length()>0 && !Objects.equals(student.getMajor(),major)) {
+        if (major != null && major.length() > 0 && !Objects.equals(student.getMajor(), major)) {
             student.setMajor(major);
         }
 

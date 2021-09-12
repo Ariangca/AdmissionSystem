@@ -11,14 +11,19 @@
         <td>course id</td>
         <td>course name</td>
         <td>credit number</td>
+        <td>Delete</td>
+        <td>Edit</td>
     </tr>
     <th:block th:each="course : ${course_list}">
-    <tr>
-        <td th:text="${course.id}" />
-        <td th:text="${course.courseName}" />
-        <td th:text="${course.creditNumber}" />
-    </tr>
+        <tr>
+            <td th:text="${course.id}"/>
+            <td th:text="${course.courseName}"/>
+            <td th:text="${course.creditNumber}"/>
+            <td><a th:href="@{/course_delete(courseId=${course.id})}">Delete</a></td>
+            <td><a th:href="@{'/course_edit/'+${course.id}}">Edit</a></td>
+        </tr>
     </th:block>
 </table>
+<a th:href="@{/course_add}">add course</a>
 </body>
 </html>

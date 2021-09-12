@@ -16,7 +16,7 @@ import javax.persistence.*;
 @Table
 public class Result {
 
-//    private String student;
+    //    private String student;
 //    private String course;
     @EmbeddedId
     private StudentCourseId id;

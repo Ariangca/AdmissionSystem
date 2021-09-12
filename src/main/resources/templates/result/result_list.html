@@ -14,12 +14,12 @@
         <td>Session</td>
     </tr>
     <th:block th:each="result : ${result_list}">
-    <tr>
-        <td th:text="${result.id.student.id}" />
-        <td th:text="${result.id.course.id}" />
-        <td th:text="${result.mark}" />
-        <td th:text="${result.session}" />
-    </tr>
+        <tr>
+            <td th:text="${result.id.student.id}"/>
+            <td th:text="${result.id.course.id}"/>
+            <td th:text="${result.mark}"/>
+            <td th:text="${result.session}"/>
+        </tr>
     </th:block>
 </table>
 </body>

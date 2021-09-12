@@ -19,13 +19,13 @@ public class ResultController {
     }
 
     @GetMapping(path = "/result_list")
-    public String getResults(Model model){
-        model.addAttribute("result_list",resultService.getResults());
+    public String getResults(Model model) {
+        model.addAttribute("result_list", resultService.getResults());
         return "result/result_list";
     }
 
     @PostMapping(path = "/result_add")
-    public void addNewResult(@RequestBody Result result){
+    public void addNewResult(@RequestBody Result result) {
         resultService.addNewResult(result);
     }
 

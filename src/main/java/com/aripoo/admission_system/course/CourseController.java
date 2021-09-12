@@ -4,10 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+
+import java.time.LocalDate;
 
 @Controller
-@RequestMapping(path= "/")
 public class CourseController {
+
     private final CourseService courseService;
 
     @Autowired
@@ -16,25 +19,47 @@ public class CourseController {
     }
 
     @GetMapping(path = "/course_list")
-    public String getCourses(Model model){
-        model.addAttribute("course_list",courseService.getCourses());
+    public String getCourses(Model model) {
+
+        model.addAttribute("course_list", courseService.getCourses());
         return "course/course_list";
     }
 
+    @GetMapping(path = "/course_add")
+    public String course_form(Model model) {
+        Course course = new Course();
+        model.addAttribute("courseData", course);
+        return "course/course_add";
+    }
+
+    //,headers = {"content-type=text/json"}
     @PostMapping(path = "/course_add")
-    public void addNewCourse(@RequestBody Course course){
+    public ModelAndView registerNewCourse(@ModelAttribute Course course, Model model) {
         courseService.addNewCourse(course);
+        ModelAndView modelAndView = new ModelAndView("redirect:/course_list");
+        return modelAndView;
     }
 
-    @DeleteMapping(path = "/edit_course/{courseId}")
-    public void deleteCourse(@PathVariable("courseID") Long courseId){
-        courseService.deleteCourse(courseId);
+    @GetMapping(path = "/course_delete")
+    public ModelAndView deleteCourse(@RequestParam(name = "courseId") String courseId) {
+        courseService.deleteCourse(Long.parseLong(courseId));
+        ModelAndView modelAndView = new ModelAndView("redirect:/course_list");
+        return modelAndView;
     }
 
-    @PutMapping(path = "/edit_course/{courseId}")
-    public void updatecourse(@PathVariable("courseId") Long courseId,
-                             @RequestParam(required = false) String courseName,
-                             @RequestParam(required = false) Integer creditNumber){
-        courseService.updateCourse(courseId,courseName,creditNumber);
+    @GetMapping(path = "/course_edit/{course_id}")
+    public String editCourse(@PathVariable(name = "course_id") String courseId, Model model) {
+        model.addAttribute("courseId", courseId);
+        return "/course/course_edit";
+    }
+
+    @PostMapping(path = "/course_edit/{courseId}")
+    public ModelAndView updateCourse(
+            @PathVariable("courseId") Long courseId,
+            @RequestParam(required = false) String courseName,
+            @RequestParam(required = false) String creditNumber) {
+        System.out.println("0000000000000000000000000000000000000000");
+        courseService.editCourse(courseId, courseName, creditNumber);
+        return new ModelAndView("redirect:/course_list");
     }
 }

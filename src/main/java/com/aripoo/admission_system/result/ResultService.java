@@ -21,7 +21,6 @@ public class ResultService {
     private final ResultRepository resultRepository;
 
 
-
     @Autowired
     public ResultService(StudentRepository studentRepository, CourseRepository courseRepository, ResultRepository resultRepository) {
         this.studentRepository = studentRepository;
@@ -31,7 +30,7 @@ public class ResultService {
     }
 
 
-    public List<Result> getResults(){
+    public List<Result> getResults() {
         return resultRepository.findAll();
 //        List<Result> a = null;
 //        return a;
