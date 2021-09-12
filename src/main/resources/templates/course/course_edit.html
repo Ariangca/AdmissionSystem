@@ -5,14 +5,14 @@
 </head>
 <body>
 <div th:replace="fragments/topnav :: navbar"></div>
-<form action="#" th:action="@{'/student_edit/'+${studentId}}" method="post">
+<form action="#" th:action="@{'/course_edit/'+${courseId}}" method="post">
 
     <table cellpadding="2" width="20%" bgcolor="99FFFF" align="center"
            cellspacing="2">
 
         <tr>
             <td colspan=2>
-                <center><font size=4><b>Student Update id: <span th:text="${studentId}"/></b></font></center>
+                <center><font size=4><b>course Update id: <span th:text="${courseId}"/></b></font></center>
             </td>
         </tr>
         <tr>

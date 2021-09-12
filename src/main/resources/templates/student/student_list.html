@@ -17,7 +17,7 @@
             <td>phone number</td>
             <td>major</td>
             <td>Delete</td>
-            <td>Update</td>
+            <td>Edit</td>
         </tr>
         <tr th:each="student: ${student_list}">
             <td th:text="${student.id}" />
@@ -29,7 +29,7 @@
             <td th:text="${student.phoneNumber}" />
             <td th:text="${student.major}" />
             <td><a th:href="@{/student_delete(studentId=${student.id})}">Delete</a></td>
-            <td><a th:href="@{'/student_edit/'+${student.id}}">Delete</a></td>
+            <td><a th:href="@{'/student_edit/'+${student.id}}">Edit</a></td>
         </tr>
     </table>
     <a th:href="@{/student_add}">student_add</a>

@@ -3,7 +3,6 @@ package com.aripoo.admission_system.student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import com.aripoo.admission_system.student.Student;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -43,23 +42,27 @@ public class StudentController {
 
     @GetMapping(path = "/student_delete")
     public ModelAndView deleteStudent(@RequestParam(name = "studentId") String studentId) {
-
-        System.out.println("0000000000000000000000000000000000000000");
         studentService.deleteStudent(Long.parseLong(studentId));
         ModelAndView modelAndView=new ModelAndView("redirect:/student_list");
         return modelAndView;
     }
     @GetMapping(path = "/student_edit/{student_id}")
-    public String editStudent(){
+    public String editStudent(@PathVariable(name = "student_id") String studentId,Model model){
+        model.addAttribute("studentId",studentId);
         return "/student/student_edit";
     }
-//    @PutMapping(path = "/student_edit/{studentId}")
-//    public void updateStudent(
-//            @PathVariable("studentId") Long studentId,
-//            @RequestParam(required = false) String firstName,
-//            @RequestParam(required = false) String lastName,
-//            @RequestParam(required = false) String email,
-//            @RequestParam(required = false) LocalDate dob){
-//        studentService.updateStudent(studentId, firstName, lastName, email, dob);
-//    }
+    @PostMapping(path = "/student_edit/{studentId}")
+    public ModelAndView updateStudent(
+            @PathVariable("studentId") Long studentId,
+            @RequestParam(required = false) String firstName,
+            @RequestParam(required = false) String lastName,
+            @RequestParam(required = false) String address,
+            @RequestParam(required = false) String city,
+            @RequestParam(required = false) String country,
+            @RequestParam(required = false) String phoneNumber,
+            @RequestParam(required = false) String major){
+        System.out.println("0000000000000000000000000000000000000000  "+studentId);
+        studentService.editStudent(studentId, firstName,  lastName,  address,  city,  country,  phoneNumber,  major);
+        return new ModelAndView("redirect:/student_list");
+    }
 }
