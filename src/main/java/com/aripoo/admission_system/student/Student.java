@@ -1,5 +1,6 @@
 package com.aripoo.admission_system.student;
 
+import com.aripoo.admission_system.course.Course;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -7,6 +8,8 @@ import lombok.ToString;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -17,13 +20,13 @@ import java.time.Period;
 public class Student {
     @Id
     @SequenceGenerator(
-            name = "studnet_sequence",
-            sequenceName = "studnet_sequence",
+            name = "student_sequence",
+            sequenceName = "student_sequence",
             allocationSize = 1
     )
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
-            generator = "studnet_sequence"
+            generator = "student_sequence"
     )
     private Long id;
     private String firstName;
@@ -34,6 +37,8 @@ public class Student {
     private String phoneNumber;
     private String major;
 
+    @ManyToMany(mappedBy = "student")
+    private List<Course> course = new ArrayList<>();
 
     public Student() {
     }

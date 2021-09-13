@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="https:/www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:replace="fragments/topnav :: navbar"></div>
+<table border="1">
+    <tr>
+        <td>teacher id</td>
+        <td>first name</td>
+        <td>last name</td>
+        <td>address</td>
+        <td>city</td>
+        <td>country</td>
+        <td>phone number</td>
+        <td>salary</td>
+        <td>Delete</td>
+        <td>Edit</td>
+    </tr>
+    <tr th:each="teacher: ${teacher_list}">
+        <td th:text="${teacher.id}"/>
+        <td th:text="${teacher.firstName}"/>
+        <td th:text="${teacher.lastName}"/>
+        <td th:text="${teacher.address}"/>
+        <td th:text="${teacher.city}"/>
+        <td th:text="${teacher.country}"/>
+        <td th:text="${teacher.phoneNumber}"/>
+        <td th:text="${teacher.salary}"/>
+        <td><a th:href="@{/teacher_delete(teacherId=${teacher.id})}">Delete</a></td>
+        <td><a th:href="@{'/teacher_edit/'+${teacher.id}}">Edit</a></td>
+    </tr>
+</table>
+<a th:href="@{/teacher_add}">add teacher</a>
+</body>
+</html>
