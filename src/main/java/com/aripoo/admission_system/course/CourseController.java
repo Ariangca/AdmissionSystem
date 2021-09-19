@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.transaction.Transactional;
 import java.time.LocalDate;
 
 @Controller
@@ -52,6 +53,7 @@ public class CourseController {
         model.addAttribute("courseId", courseId);
         return "/course/course_edit";
     }
+
 
     @PostMapping(path = "/course_edit/{courseId}")
     public ModelAndView updateCourse(

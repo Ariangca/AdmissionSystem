@@ -1,6 +1,7 @@
 package com.aripoo.admission_system.course;
 
 import com.aripoo.admission_system.student.Student;
+import com.aripoo.admission_system.teacher.Teacher;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -31,7 +32,11 @@ public class Course {
     private Integer creditNumber;
 
     @ManyToMany
-    private List<Student> student = new ArrayList<>();
+    private List<Student> students = new ArrayList<>();
+
+    @ManyToOne
+    private Teacher teacher ;
+
 
     public Course() {
     }

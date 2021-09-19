@@ -37,8 +37,9 @@ public class Student {
     private String phoneNumber;
     private String major;
 
-    @ManyToMany(mappedBy = "student")
-    private List<Course> course = new ArrayList<>();
+
+    @ManyToMany(mappedBy = "students")
+    private List<Course> courses = new ArrayList<>();
 
     public Student() {
     }

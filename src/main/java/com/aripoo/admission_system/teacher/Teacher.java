@@ -1,5 +1,6 @@
 package com.aripoo.admission_system.teacher;
 
+import com.aripoo.admission_system.course.Course;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -7,6 +8,7 @@ import lombok.ToString;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.List;
 
 @Getter
 @Setter
@@ -33,6 +35,9 @@ public class Teacher {
     private String country;
     private String phoneNumber;
     private Long salary;
+
+    @OneToMany(mappedBy = "teacher")
+    private List<Course> courses;
 
 
     public Teacher() {
