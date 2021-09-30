@@ -1,9 +1,35 @@
 <div th:fragment="navbar">
-    <nav>
-        <a th:href="@{/}">Menu</a><br>
-        <a th:href="@{/student_list}">student_list</a><br>
-        <a th:href="@{/teacher_list}">teacher_list</a><br>
-        <a th:href="@{/course_list}">course_list</a><br>
-        <a th:href="@{/result_list}">result_list</a>
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+        <div class="container">
+            <a href="#" class="navbar-brand">Admission System</a>
+            <button class="navbar-toggler"
+                    type="buutton"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navmenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navmenu">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/}">Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/student_list}">Student</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/teacher_list}">Teacher</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/course_list}">Course</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/result_list}">Result</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+                crossorigin="anonymous"></script>
     </nav>
 </div>
