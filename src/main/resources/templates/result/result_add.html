@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="https:/www.thymeleaf.org">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="validate.js"></script>
+</head>
+<body>
+<div th:replace="fragments/topnav :: navbar"></div>
+<form action="#" th:action="@{/result_add}" th:object="${resultData}" method="post">
+    private Student student
+    private Course course
+
+
+    private Integer session
+
+    private Integer Mark
+    <table style="width: fit-content" class="table center table-borderless">
+
+        <tr>
+            <td colspan=2>
+                <div style="text-align: center;"><span
+                        style="font-size: medium; "><b>Result Registration Form</b></span></div>
+            </td>
+        </tr>
+
+        <tr>
+            <td>Student ID</td>
+            <td><input type=text th:field="*{id.student}" id="studentID" size="30"></td>
+
+        </tr>
+
+        <tr>
+            <td>Course ID</td>
+            <td><input type=text th:field="*{id.course}" id="courseID" size="30"></td>
+        </tr>
+
+        <tr>
+            <td>session</td>
+            <td><input type=text th:field="*{session}" id="session" size="30"></td>
+        </tr>
+
+        <tr>
+            <td>mark</td>
+            <td><input type=text th:field="*{mark}" id="mark" size="30"></td>
+        </tr>
+
+        <tr>
+            <td><input type="reset"></td>
+            <td colspan="2"><input type="submit" value="Submit Form"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

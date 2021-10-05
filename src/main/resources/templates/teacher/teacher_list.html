@@ -3,26 +3,30 @@
 <head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
 <div th:replace="fragments/topnav :: navbar"></div>
-<table border="1">
+<table style="width: fit-content" class="table center">
+    <thead>
     <tr>
-        <td>teacher id</td>
-        <td>first name</td>
-        <td>last name</td>
-        <td>address</td>
-        <td>city</td>
-        <td>country</td>
-        <td>phone number</td>
-        <td>salary</td>
-        <td>Delete</td>
-        <td>Edit</td>
+        <th scope="col">teacher id</th>
+        <th scope="col">first name</th>
+        <th scope="col">last name</th>
+        <th scope="col">address</th>
+        <th scope="col">city</th>
+        <th scope="col">country</th>
+        <th scope="col">phone number</th>
+        <th scope="col">salary</th>
+        <th scope="col">Delete</th>
+        <th scope="col">Edit</th>
     </tr>
+    </thead>
+    <tbody>
     <tr th:each="teacher: ${teacher_list}">
-        <td th:text="${teacher.id}"/>
+        <th scope="row" th:text="${teacher.id}"/>
         <td th:text="${teacher.firstName}"/>
         <td th:text="${teacher.lastName}"/>
         <td th:text="${teacher.address}"/>
@@ -33,6 +37,7 @@
         <td><a th:href="@{/teacher_delete(teacherId=${teacher.id})}">Delete</a></td>
         <td><a th:href="@{'/teacher_edit/'+${teacher.id}}">Edit</a></td>
     </tr>
+    </tbody>
 </table>
 <a th:href="@{/teacher_add}">add teacher</a>
 </body>
