@@ -17,6 +17,7 @@
         <th scope="col">Mark</th>
         <th scope="col">Session</th>
         <th scope="col">Delete</th>
+        <th scope="col">Edit</th>
     </tr>
     </thead>
     <tbody>
@@ -27,6 +28,7 @@
             <td th:text="${result.mark}"/>
             <td th:text="${result.session}"/>
             <td><a th:href="@{/result_delete(studentId=${result.id.student.id},courseId=${result.id.course.id})}">Delete</a></td>
+            <td><a th:href="@{/result_edit/{studentId}/{courseId}(studentId=${result.id.student.id},courseId=${result.id.course.id})}">Edit</a></td>
         </tr>
     </th:block>
     </tbody>

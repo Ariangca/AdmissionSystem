@@ -60,7 +60,6 @@ public class CourseController {
             @PathVariable("courseId") Long courseId,
             @RequestParam(required = false) String courseName,
             @RequestParam(required = false) String creditNumber) {
-        System.out.println("0000000000000000000000000000000000000000");
         courseService.editCourse(courseId, courseName, creditNumber);
         return new ModelAndView("redirect:/course_list");
     }

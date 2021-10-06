@@ -6,6 +6,7 @@ import com.aripoo.admission_system.student.Student;
 import com.aripoo.admission_system.student.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.transaction.Transactional;
 
@@ -49,30 +50,30 @@ public class ResultService {
         StudentCourseId resultId=new StudentCourseId(student,course);
         resultRepository.deleteById(resultId);
     }
+    public Result getResulltById(StudentCourseId id) {
+        Result result = resultRepository.getById(id);
+        return result;
+    }
 
-//    @Transactional
-//    public void updateResult(Long studentId, Long courseId, Integer session, Integer mark) {
-//        Student student=studentRepository.findById(studentId).orElseThrow(
-//                ()->new IllegalStateException("student with id "+ studentId + " does not exist"));
-//
-//        Course course=courseRepository.findById(courseId).orElseThrow(
-//                ()-> new IllegalStateException("course with id "+ courseId + " does not exist"));
-//
-//        StudentCourseId studentCourseId=new StudentCourseId(student, course);
-//
-//        Result result= resultRepository.findById(studentCourseId).orElseThrow(
-//                ()-> new IllegalStateException("result with student id "+ studentId +" and course id" +
-//                        courseId +" does not exist")
-//        );
-//
-//        if(session !=null && session>0 && !Objects.equals(result.getSession(),session)){
-//            result.setSession(session);
-//        }
-//
-//        if(mark !=null && mark>0 && !Objects.equals(result.getMark(),mark)){
-//            result.setMark(mark);
-//        }
-//
-//    }
+    @Transactional
+    public void updateResult(Long studentId, Long courseId, Integer session, Integer mark) {
+        Student student=studentRepository.getById(studentId);
+        Course course=courseRepository.getById(courseId);
+
+        Result result=resultRepository.findById(new StudentCourseId(
+                student,course
+        )).orElseThrow(
+                ()->new IllegalStateException("result with student id: "+ student.getId()
+                        +" and course id: "+course.getId()+ " does not exist"));
+
+        if(session !=null && session>0 && !Objects.equals(result.getSession(),session)){
+            result.setSession(session);
+        }
+
+        if(mark !=null && mark>0 && !Objects.equals(result.getMark(),mark)){
+            result.setMark(mark);
+        }
+
+    }
 
 }

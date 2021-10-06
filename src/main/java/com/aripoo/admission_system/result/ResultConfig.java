@@ -17,8 +17,10 @@ public class ResultConfig {
     @Bean
     CommandLineRunner commandLineRunner(ResultRepository resultRepository, StudentRepository studentRepository, CourseRepository courseRepository) {
         return args -> {
-            Student s1 = new Student("asghar", "gholi", "gholamabad", "gholamcity", "gholamdare", "000000", "computer");
-            Course c1 = new Course("c1", 2);
+            Student s1 = new Student("s1", "s1", "1", "1", "1", "1", "1");
+            Student s2 = new Student("s2", "s2", "2", "2", "2", "2", "2");
+            Course c1 = new Course("c1", 1);
+            Course c2 = new Course("c2", 2);
             Result r1 = new Result(new StudentCourseId(s1, c1), 2, 2);
             studentRepository.save(s1);
             courseRepository.save(c1);

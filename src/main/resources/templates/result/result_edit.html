@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="https:/www.thymeleaf.org">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="validate.js"></script>
+</head>
+<body>
+<div th:replace="fragments/topnav :: navbar"></div>
+<form action="#" th:action="@{/result_edit/{studentId}/{courseId}(studentId=${result.id.student.id},courseId=${result.id.course.id})}" method="post">
+
+    <table style="width: fit-content" class="table center table-borderless">
+
+        <tr>
+            <td colspan=2>
+                <div style="text-align: center;"><b>Result Update student id: <span th:text="${result.id.student.id}"/> course id: <span th:text="${result.id.course.id}"/></b></div>
+            </td>
+        </tr>
+        <tr>
+            <td>Session</td>
+            <td><input type=text name="session" id="session" size="30"></td>
+
+        </tr>
+
+        <tr>
+            <td>Mark</td>
+            <td><input type=text name="mark" id="mark" size="30"></td>
+        </tr>
+
+
+        <tr>
+            <td><input type="reset"></td>
+            <td colspan="2"><input type="submit" value="Submit Form"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
