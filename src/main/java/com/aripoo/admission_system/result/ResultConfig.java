@@ -22,7 +22,7 @@ public class ResultConfig {
             Result r1 = new Result(new StudentCourseId(s1, c1), 2, 2);
             studentRepository.save(s1);
             courseRepository.save(c1);
-//            resultRepository.saveAll(List.of(r1));
+            resultRepository.saveAll(List.of(r1));
         };
     }
 }

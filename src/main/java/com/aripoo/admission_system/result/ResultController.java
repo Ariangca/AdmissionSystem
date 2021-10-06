@@ -9,8 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -29,7 +29,7 @@ public class ResultController {
 
     @GetMapping(path = "/result_list")
     public String getResults(Model model) {
-        model.addAttribute("result_list", resultService.getResults());
+        model.addAttribute("results", resultService.getResults());
         return "result/result_list";
     }
     @GetMapping(path = "/result_add")
@@ -38,11 +38,21 @@ public class ResultController {
         List<Course> courses=courseService.getCourses();
         model.addAttribute("students",students);
         model.addAttribute("courses",courses);
+        Result resultData=new Result();
+        model.addAttribute("resultData",resultData);
         return "result/result_add";
     }
     @PostMapping(path = "/result_add")
-    public void addNewResult(@RequestBody Result result) {
-        resultService.addNewResult(result);
+    public ModelAndView addNewResult(@ModelAttribute Result resultData, Model model) {
+        System.out.println("0000000000000000000000000000000000000000");
+        resultService.addNewResult(resultData);
+        return new ModelAndView("redirect:/result_list");
+    }
+
+    @GetMapping(path = "/result_delete")
+    public ModelAndView deleteResult(@RequestParam Long studentId,@RequestParam Long courseId){
+        resultService.deleteResult(studentId,courseId);
+        return new ModelAndView("redirect:/result_list");
     }
 
 //    @DeleteMapping(path = "/edit_result/{studentId}/{courseId}")

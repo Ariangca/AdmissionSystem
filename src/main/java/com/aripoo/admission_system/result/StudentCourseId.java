@@ -22,12 +22,10 @@ import java.io.Serializable;
 public class StudentCourseId implements Serializable {
 
     @OneToOne
-    @MapsId
-    private Student student;
+    protected Student student;
 
     @OneToOne
-    @MapsId
-    private Course course;
+    protected Course course;
 
     public StudentCourseId() {
     }

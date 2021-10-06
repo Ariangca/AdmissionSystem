@@ -9,13 +9,7 @@
 <body>
 <div th:replace="fragments/topnav :: navbar"></div>
 <form action="#" th:action="@{/result_add}" th:object="${resultData}" method="post">
-    private Student student
-    private Course course
 
-
-    private Integer session
-
-    private Integer Mark
     <table style="width: fit-content" class="table center table-borderless">
 
         <tr>
@@ -27,22 +21,30 @@
 
         <tr>
             <td>Student ID</td>
-            <td><input type=text th:field="*{id.student}" id="studentID" size="30"></td>
+            <td><select th:field="*{id.student.id}">
+                <th:block th:each="student: ${students}">
+                    <option th:value="${student.id}" th:text="${student.firstName}+' '+${student.lastName}"></option>
+                </th:block>
+            </select></td>
 
         </tr>
 
         <tr>
             <td>Course ID</td>
-            <td><input type=text th:field="*{id.course}" id="courseID" size="30"></td>
+            <td><select th:field="*{id.course.id}">
+                <th:block th:each="course: ${courses}">
+                    <option th:value="${course.id}" th:text="${course.courseName}"></option>
+                </th:block>
+            </select></td>
         </tr>
 
         <tr>
-            <td>session</td>
+            <td>Session</td>
             <td><input type=text th:field="*{session}" id="session" size="30"></td>
         </tr>
 
         <tr>
-            <td>mark</td>
+            <td>Mark</td>
             <td><input type=text th:field="*{mark}" id="mark" size="30"></td>
         </tr>
 

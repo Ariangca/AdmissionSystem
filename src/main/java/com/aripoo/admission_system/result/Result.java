@@ -5,6 +5,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Getter
 @Setter
@@ -12,10 +13,9 @@ import javax.persistence.*;
 
 @Entity
 @Table
-public class Result {
+public class Result implements Serializable {
 
-    //    private String student;
-//    private String course;
+
     @EmbeddedId
     private StudentCourseId id;
 
@@ -24,6 +24,7 @@ public class Result {
     private Integer mark;
 
     public Result() {
+
     }
 
     public Result(StudentCourseId id, Integer session, Integer mark) {

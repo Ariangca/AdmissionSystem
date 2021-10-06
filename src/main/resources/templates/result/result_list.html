@@ -12,19 +12,21 @@
 <table style="width: fit-content" class="table center">
     <thead>
     <tr>
-        <th scope="col">student id</th>
-        <th scope="col">course id</th>
+        <th scope="col">Student name</th>
+        <th scope="col">Course name</th>
         <th scope="col">Mark</th>
         <th scope="col">Session</th>
+        <th scope="col">Delete</th>
     </tr>
     </thead>
     <tbody>
-    <th:block th:each="result : ${result_list}">
+    <th:block th:each="result : ${results}">
         <tr>
-            <th scope="row" th:text="${result.id.student.id}"/>
-            <th scope="row" th:text="${result.id.course.id}"/>
+            <th scope="row" th:text="${result.id.student.firstName}+' '+${result.id.student.lastName}"/>
+            <th scope="row" th:text="${result.id.course.courseName}"/>
             <td th:text="${result.mark}"/>
             <td th:text="${result.session}"/>
+            <td><a th:href="@{/result_delete(studentId=${result.id.student.id},courseId=${result.id.course.id})}">Delete</a></td>
         </tr>
     </th:block>
     </tbody>

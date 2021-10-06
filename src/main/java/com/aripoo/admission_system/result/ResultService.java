@@ -41,9 +41,14 @@ public class ResultService {
         resultRepository.save(result);
     }
 
-//    public void deleteResult(StudentCourseId resultId) {
-//        resultRepository.deleteById(resultId);
-//    }
+
+
+    public void deleteResult(Long studentId,Long courseId) {
+        Student student=studentRepository.getById(studentId);
+        Course course=courseRepository.getById(courseId);
+        StudentCourseId resultId=new StudentCourseId(student,course);
+        resultRepository.deleteById(resultId);
+    }
 
 //    @Transactional
 //    public void updateResult(Long studentId, Long courseId, Integer session, Integer mark) {
