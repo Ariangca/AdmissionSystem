@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="https:/www.thymeleaf.org">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:replace="fragments/topnav :: navbar"></div>
+<table style="width: fit-content" class="table center">
+    <thead>
+    <tr>
+        <th scope="col">course id</th>
+        <th scope="col">course name</th>
+        <th scope="col">credit number</th>
+        <th scope="col">Delete</th>
+        <th scope="col">Edit</th>
+    </tr>
+    </thead>
+    <tbody>
+    <th:block th:each="course : ${course_list}">
+        <tr>
+            <th scope="row" th:text="${course.id}"/>
+            <td th:text="${course.courseName}"/>
+            <td th:text="${course.creditNumber}"/>
+            <td><a th:href="@{/course_delete(courseId=${course.id})}">Delete</a></td>
+            <td><a th:href="@{'/course_edit/'+${course.id}}">Edit</a></td>
+        </tr>
+    </th:block>
+    </tbody>
+</table>
+<a th:href="@{/course_add}">add course</a><br/>
+<a th:href="@{/course_student_add}">add student to course</a><br/>
+<a th:href="@{/course_teacher_add}">add teacher to course</a>
+</body>
+</html>
