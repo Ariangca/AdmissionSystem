@@ -71,4 +71,5 @@ public class ResultController {
         resultService.updateResult(studentId, courseId, session, mark);
         return new ModelAndView("redirect:/result_list");
     }
+
 }

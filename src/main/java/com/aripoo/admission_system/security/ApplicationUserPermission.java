@@ -1,14 +1,18 @@
 package com.aripoo.admission_system.security;
 
-public enum AplicationUserPermission {
+public enum ApplicationUserPermission {
     STUDENT_READ("student:read"),
     STUDENT_WRITE("student:write"),
+    TEACHER_READ("teacher:read"),
+    TEACHER_WRITE("teacher:write"),
+    RESULT_READ("result:read"),
+    RESULT_WRITE("result:write"),
     COURSE_READ("course:read"),
     COURSE_WRITE("course:write");
 
     private final String permission;
 
-    AplicationUserPermission(String permission) {
+    ApplicationUserPermission(String permission) {
         this.permission = permission;
     }
 

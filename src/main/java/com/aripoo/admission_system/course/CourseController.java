@@ -63,4 +63,10 @@ public class CourseController {
         courseService.editCourse(courseId, courseName, creditNumber);
         return new ModelAndView("redirect:/course_list");
     }
+    @GetMapping(path = "/course_info/{courseId}")
+    public String courseInfo(@PathVariable Long courseId,Model model){
+        Course course=courseService.getCourseById(courseId);
+        model.addAttribute("course",course);
+        return "course/course_info";
+    }
 }

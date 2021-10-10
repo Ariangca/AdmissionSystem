@@ -9,30 +9,43 @@
 </head>
 <body>
 <div th:replace="fragments/topnav :: navbar"></div>
-<table style="width: fit-content" class="table center">
-    <thead>
-    <tr>
-        <th scope="col">course id</th>
-        <th scope="col">course name</th>
-        <th scope="col">credit number</th>
-        <th scope="col">Delete</th>
-        <th scope="col">Edit</th>
-    </tr>
-    </thead>
-    <tbody>
-    <th:block th:each="course : ${course_list}">
+<div style="width: fit-content">
+    <h2>Info of course: <span th:text="${course.courseName}"/></h2>
+    <p>course id: <span th:text="${course.id}"/></p>
+    <p>course name: <span th:text="${course.courseName}"/></p>
+    <p>credit number: <span th:text="${course.creditNumber}"/></p>
+    <p>Teacher: <span th:text="${course.teacher?.firstName}"/> <span th:text="${course.teacher?.lastName}"/></p><!--used teacher? because it can be null-->
+
+</div>
+<div>
+    <p>Students: </p>
+    <table style="width: fit-content" class="table center center">
+        <thead>
         <tr>
-            <th scope="row" th:text="${course.id}"/>
-            <td th:text="${course.courseName}"/>
-            <td th:text="${course.creditNumber}"/>
-            <td><a th:href="@{/course_delete(courseId=${course.id})}">Delete</a></td>
-            <td><a th:href="@{'/course_edit/'+${course.id}}">Edit</a></td>
+            <th scope="col">student id</th>
+            <th scope="col">first name</th>
+            <th scope="col">last name</th>
+            <th scope="col">address</th>
+            <th scope="col">city</th>
+            <th scope="col">country</th>
+            <th scope="col">phone number</th>
+            <th scope="col">major</th>
         </tr>
-    </th:block>
-    </tbody>
-</table>
-<a th:href="@{/course_add}">add course</a><br/>
-<a th:href="@{/course_student_add}">add student to course</a><br/>
-<a th:href="@{/course_teacher_add}">add teacher to course</a>
+        </thead>
+        <tbody>
+        <tr th:each="student: ${course.students}">
+            <th scope="row" th:text="${student.id}"/>
+            <td th:text="${student.firstName}"/>
+            <td th:text="${student.lastName}"/>
+            <td th:text="${student.address}"/>
+            <td th:text="${student.city}"/>
+            <td th:text="${student.country}"/>
+            <td th:text="${student.phoneNumber}"/>
+            <td th:text="${student.major}"/>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
 </body>
 </html>

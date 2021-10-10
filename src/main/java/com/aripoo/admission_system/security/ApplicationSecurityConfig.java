@@ -23,35 +23,41 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
         this.passwordEncoder = passwordEncoder;
     }
 
-//    @Override
-//    protected void configure(HttpSecurity http) throws Exception{
-//        http
-//                .authorizeRequests()
-//                .antMatchers("/","index","/css/*","/js/*")
-//                .permitAll()
-//                .anyRequest()
-//                .authenticated()
-//                .and()
-//                .httpBasic();
-//    }
+    @Override
+    protected void configure(HttpSecurity http) throws Exception{
+        http
+                .authorizeRequests()
+                .antMatchers("/","index","/css/*","/js/*").permitAll()
+                .anyRequest()
+                .authenticated()
+                .and()
+                .httpBasic();
+    }
 
     @Override
     @Bean
     protected UserDetailsService userDetailsService() {
-        UserDetails testUser=User.builder()
-                .username("test")
-                .password(passwordEncoder.encode("admin"))
-                .roles("STUDENT") // role
+        UserDetails studentUser=User.builder()
+                .username("student")
+                .password(passwordEncoder.encode("student"))
+                .roles(ApplicationUserRole.STUDENT.name()) // role
                 .build();
 
-        UserDetails arianUser=User.builder()
+        UserDetails teacherUser=User.builder()
+                .username("teacher")
+                .password(passwordEncoder.encode("teacher"))
+                .roles(ApplicationUserRole.TEACHER.name()) // role
+                .build();
+
+        UserDetails arUser=User.builder()
                 .username("ar")
                 .password(passwordEncoder.encode("ar"))
-                .roles("ADMIN")
+                .roles(ApplicationUserRole.ADMIN.name())
                 .build();
         return new InMemoryUserDetailsManager(
-                testUser,
-                arianUser
+                studentUser,
+                teacherUser,
+                arUser
         );
     }
 }

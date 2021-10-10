@@ -17,6 +17,7 @@
         <th scope="col">credit number</th>
         <th scope="col">Delete</th>
         <th scope="col">Edit</th>
+        <th scope="col">Info</th>
     </tr>
     </thead>
     <tbody>
@@ -27,6 +28,7 @@
             <td th:text="${course.creditNumber}"/>
             <td><a th:href="@{/course_delete(courseId=${course.id})}">Delete</a></td>
             <td><a th:href="@{'/course_edit/'+${course.id}}">Edit</a></td>
+            <td><a th:href="@{'/course_info/'+${course.id}}">Info</a></td>
         </tr>
     </th:block>
     </tbody>
