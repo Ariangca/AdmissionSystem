@@ -31,7 +31,13 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest()
                 .authenticated()
                 .and()
-                .httpBasic();
+                .formLogin()
+                .loginPage("/login").permitAll()
+                .defaultSuccessUrl("/",true)
+                .and()
+                .logout().permitAll()
+                .logoutSuccessUrl("/")
+        ;
     }
 
     @Override
@@ -40,19 +46,19 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
         UserDetails studentUser=User.builder()
                 .username("student")
                 .password(passwordEncoder.encode("student"))
-                .roles(ApplicationUserRole.STUDENT.name()) // role
+                .roles(ApplicationUserRole.STUDENT.name()) // ROLE_STUDENT
                 .build();
 
         UserDetails teacherUser=User.builder()
                 .username("teacher")
                 .password(passwordEncoder.encode("teacher"))
-                .roles(ApplicationUserRole.TEACHER.name()) // role
+                .roles(ApplicationUserRole.TEACHER.name()) // ROLE_TEACHER
                 .build();
 
         UserDetails arUser=User.builder()
                 .username("ar")
                 .password(passwordEncoder.encode("ar"))
-                .roles(ApplicationUserRole.ADMIN.name())
+                .roles(ApplicationUserRole.ADMIN.name()) // ROLE_ADMIN
                 .build();
         return new InMemoryUserDetailsManager(
                 studentUser,
