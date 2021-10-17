@@ -63,7 +63,6 @@ public class StudentController {
             @RequestParam(required = false) String country,
             @RequestParam(required = false) String phoneNumber,
             @RequestParam(required = false) String major) {
-        System.out.println("0000000000000000000000000000000000000000  " + studentId);
         studentService.editStudent(studentId, firstName, lastName, address, city, country, phoneNumber, major);
         return new ModelAndView("redirect:/student_list");
     }
