@@ -18,4 +18,8 @@ public class AuthenticationController {
         return "logout";
     }
 
+    @GetMapping(path = "/login_error")
+    public String getLoginErrorView(){
+        return "error/login";
+    }
 }
