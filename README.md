@@ -1,4 +1,4 @@
-# AdmissionSystem
+# Admission System
 This is a AdmissionSystem webapplication with Spring boot framwork, and Hibernate object-relational mapping with database.
 It also has permission based login with spring security framwork.
 
